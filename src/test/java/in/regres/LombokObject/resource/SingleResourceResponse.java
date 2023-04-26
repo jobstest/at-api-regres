@@ -1,11 +1,9 @@
-package in.regres.LombokObject.Resource;
+package in.regres.LombokObject.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import in.regres.LombokObject.Base.Support;
+import in.regres.LombokObject.base.Support;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
