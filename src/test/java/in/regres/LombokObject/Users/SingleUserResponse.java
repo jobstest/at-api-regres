@@ -1,13 +1,15 @@
-package in.regres.LombokObject.SingleUser;
+package in.regres.LombokObject.Users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import in.regres.LombokObject.Base.Support;
+import lombok.Data;
 
-@lombok.Data
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SingleUserResponse {
     @JsonProperty("data")
-    private SingleUserData data;
+    private UserData data;
     @JsonProperty("support")
-    private SingleUserSupport support;
+    private Support support;
 }

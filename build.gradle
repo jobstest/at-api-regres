@@ -94,10 +94,3 @@ allure {
 test {
     useJUnitPlatform()
 }
-
-task auth(type: Test) {
-    useJUnitPlatform {
-        //includeTags "auth"
-        //excludeTags "simple"
-    }
-}

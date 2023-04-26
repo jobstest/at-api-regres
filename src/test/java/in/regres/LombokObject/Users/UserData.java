@@ -1,13 +1,12 @@
-package in.regres.LombokObject.SingleUser;
+package in.regres.LombokObject.Users;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.Gson;
 import lombok.Data;
 
-@lombok.Data
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SingleUserData {
+public class UserData {
     private Integer id;
     private String email;
     @JsonProperty("first_name")
