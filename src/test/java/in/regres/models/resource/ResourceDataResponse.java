@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResourceData {
+public class ResourceDataResponse {
 	@JsonProperty("color")
 	private String color;
 	@JsonProperty("year")

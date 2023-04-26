@@ -15,7 +15,7 @@ public class UserTests {
     String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
 
     @Test
-    void checkEmailUsingGroovy(){
+    void checkEmailUsingGroovy() {
         given()
                 .spec(requestSpec)
                 .when()
@@ -27,7 +27,7 @@ public class UserTests {
     }
 
     @Test
-    void checkInputInDiferentObjectOnListResponse(){
+    void checkInputInDiferentObjectOnListResponse() {
         ListUsersResponse response = given()
                 .spec(requestSpec)
                 .when()
@@ -37,7 +37,7 @@ public class UserTests {
                 .log().body()
                 .statusCode(200)
                 .extract().as(ListUsersResponse.class);
-        assertEquals(2,response.getPage());
+        assertEquals(2, response.getPage());
         assertEquals(6, response.getPerPage());
         assertEquals(12, response.getTotal());
         assertEquals(2, response.getTotalPages());
@@ -70,7 +70,7 @@ public class UserTests {
     }
 
     @Test
-    void singleUserNotFound(){
+    void singleUserNotFound() {
         SingleUserResponse response = given()
                 .spec(requestSpec)
                 .when()
@@ -80,6 +80,29 @@ public class UserTests {
                 .statusCode(404)
                 .extract().as(SingleUserResponse.class);
         assertEquals(false, response.equals(false));
+    }
+
+    @Test
+    void checkInputInDiferentObjectOnDelayedResponse() {
+        ListUsersResponse response = given()
+                .spec(requestSpec)
+                .when()
+                .get("/users?delay=3")
+                .then()
+                .spec(responseSpec)
+                .log().body()
+                .statusCode(200)
+                .extract().as(ListUsersResponse.class);
+        assertEquals(1, response.getPage());
+        assertEquals(6, response.getPerPage());
+        assertEquals(12, response.getTotal());
+        assertEquals(2, response.getTotalPages());
+        assertEquals(1, response.getData().get(0).getId());
+        assertEquals("janet.weaver@reqres.in", response.getData().get(1).getEmail());
+        assertEquals("Emma", response.getData().get(2).getFirstName());
+        assertEquals("Holt", response.getData().get(3).getLastName());
+        assertEquals(url, response.getSupport().getUrl());
+        assertEquals(text, response.getSupport().getText());
     }
 
 }

@@ -14,7 +14,7 @@ public class ResourceTests {
     String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
 
     @Test
-    void singleResourse(){
+    void singleResourse() {
         SingleResourceResponse response = given()
                 .spec(requestSpec)
                 .when()
@@ -29,12 +29,12 @@ public class ResourceTests {
         assertEquals(2001, response.getData().getYear());
         assertEquals("#C74375", response.getData().getColor());
         assertEquals("17-2031", response.getData().getPantoneValue());
-        assertEquals(text, response.getSupport().getText() );
+        assertEquals(text, response.getSupport().getText());
         assertEquals(url, response.getSupport().getUrl());
     }
 
     @Test
-    void checkInputInDiferentObjectonListResponse(){
+    void checkInputInDiferentObjectonListResponse() {
         ListResourceResponse response = given()
                 .spec(requestSpec)
                 .when()
@@ -58,7 +58,7 @@ public class ResourceTests {
     }
 
     @Test
-    void singleRasourceNotFound(){
+    void singleRasourceNotFound() {
         SingleResourceResponse response = given()
                 .spec(requestSpec)
                 .when()

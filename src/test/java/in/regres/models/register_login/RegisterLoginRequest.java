@@ -1,4 +1,4 @@
-package in.regres.models.base;
+package in.regres.models.register_login;
 
 import lombok.Data;
 

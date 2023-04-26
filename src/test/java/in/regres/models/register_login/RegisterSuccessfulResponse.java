@@ -1,4 +1,4 @@
-package in.regres.models.register;
+package in.regres.models.register_login;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-@JsonIgnoreProperties
-public class RegisterLoginUnsuccessfulResponse {
-    @JsonProperty("error")
-    private String error;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class SupportResponse {
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("text")
+    private String text;
 }

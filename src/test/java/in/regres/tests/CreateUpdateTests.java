@@ -1,9 +1,9 @@
 package in.regres.tests;
 
 import com.github.javafaker.Faker;
-import in.regres.models.base.CreateUpdateUserRequest;
-import in.regres.models.create.CreateResponse;
-import in.regres.models.update.UpdateResponse;
+import in.regres.models.create_update.CreateResponse;
+import in.regres.models.create_update.CreateUpdateUserRequest;
+import in.regres.models.create_update.UpdateResponse;
 import org.junit.jupiter.api.Test;
 
 import static in.regres.specs.Specs.requestSpec;
@@ -38,7 +38,7 @@ public class CreateUpdateTests {
     }
 
     @Test
-    void updatePut(){
+    void updatePut() {
         CreateUpdateUserRequest update = new CreateUpdateUserRequest();
         update.setName(name);
         update.setJob(job);
@@ -54,11 +54,11 @@ public class CreateUpdateTests {
                 .statusCode(200)
                 .extract().as(UpdateResponse.class);
         assertEquals(name, update.getName());
-        assertEquals(job,update.getJob());
+        assertEquals(job, update.getJob());
     }
 
     @Test
-    void updatePatch(){
+    void updatePatch() {
         CreateUpdateUserRequest update = new CreateUpdateUserRequest();
         update.setName(name);
         update.setJob(job);
@@ -74,11 +74,11 @@ public class CreateUpdateTests {
                 .statusCode(200)
                 .extract().as(UpdateResponse.class);
         assertEquals(name, update.getName());
-        assertEquals(job,update.getJob());
+        assertEquals(job, update.getJob());
     }
 
     @Test
-    void delete(){
+    void delete() {
         given()
                 .spec(requestSpec)
                 .when()

@@ -1,10 +1,10 @@
 package in.regres.tests;
 
 import com.github.javafaker.Faker;
-import in.regres.models.base.RegisterLoginRequest;
-import in.regres.models.register.RegisterSuccessfulResponse;
-import in.regres.models.login.LoginSuccessfulResponce;
-import in.regres.models.base.RegisterLoginUnsuccessfulResponse;
+import in.regres.models.register_login.LoginSuccessfulResponse;
+import in.regres.models.register_login.RegisterLoginRequest;
+import in.regres.models.register_login.RegisterLoginUnsuccessfulResponse;
+import in.regres.models.register_login.RegisterSuccessfulResponse;
 import org.junit.jupiter.api.Test;
 
 import static in.regres.specs.Specs.requestSpec;
@@ -23,7 +23,7 @@ public class RegisterLoginTests {
     String errorMessage = "Missing email or username";
 
     @Test
-    void registerSuccessful(){
+    void registerSuccessful() {
         RegisterLoginRequest register = new RegisterLoginRequest();
         register.setEmail(email);
         register.setPassword(password);
@@ -43,7 +43,7 @@ public class RegisterLoginTests {
     }
 
     @Test
-    void registerUnsuccessfulWithoutPassword(){
+    void registerUnsuccessfulWithoutPassword() {
         RegisterLoginRequest register = new RegisterLoginRequest();
         register.setEmail(email);
 
@@ -61,7 +61,7 @@ public class RegisterLoginTests {
     }
 
     @Test
-    void registerUnsuccessfulWithoutEmail(){
+    void registerUnsuccessfulWithoutEmail() {
         RegisterLoginRequest register = new RegisterLoginRequest();
         register.setPassword(password);
 
@@ -79,12 +79,12 @@ public class RegisterLoginTests {
     }
 
     @Test
-    void loginSuccessful(){
+    void loginSuccessful() {
         RegisterLoginRequest login = new RegisterLoginRequest();
         login.setEmail(email);
         login.setPassword(password);
 
-        LoginSuccessfulResponce response = given()
+        LoginSuccessfulResponse response = given()
                 .spec(requestSpec)
                 .body(login.toString())
                 .when()
@@ -93,12 +93,12 @@ public class RegisterLoginTests {
                 .spec(responseSpec)
                 .log().all()
                 .statusCode(200)
-                .extract().as(LoginSuccessfulResponce.class);
+                .extract().as(LoginSuccessfulResponse.class);
         assertEquals(token, response.getToken());
     }
 
     @Test
-    void loginUnsuccessfulWithoutPassword(){
+    void loginUnsuccessfulWithoutPassword() {
         RegisterLoginRequest register = new RegisterLoginRequest();
         register.setEmail(email);
 
@@ -116,7 +116,7 @@ public class RegisterLoginTests {
     }
 
     @Test
-    void loginUnsuccessfulWithoutEmail(){
+    void loginUnsuccessfulWithoutEmail() {
         RegisterLoginRequest register = new RegisterLoginRequest();
         register.setPassword(password);
 
