@@ -1,4 +1,4 @@
-package in.regres.LombokObject.resource;
+package in.regres.models.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

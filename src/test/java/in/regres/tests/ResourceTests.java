@@ -1,7 +1,7 @@
 package in.regres.tests;
 
-import in.regres.LombokObject.resource.ListResourceResponse;
-import in.regres.LombokObject.resource.SingleResourceResponse;
+import in.regres.models.resource.ListResourceResponse;
+import in.regres.models.resource.SingleResourceResponse;
 import org.junit.jupiter.api.Test;
 
 import static in.regres.specs.Specs.requestSpec;
