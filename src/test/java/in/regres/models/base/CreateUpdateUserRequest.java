@@ -1,9 +1,9 @@
-package in.regres.models.create;
+package in.regres.models.base;
 
 import lombok.Data;
 
 @Data
-public class CreateRequest {
+public class CreateUpdateUserRequest {
 	private String name;
 	private String job;
 
