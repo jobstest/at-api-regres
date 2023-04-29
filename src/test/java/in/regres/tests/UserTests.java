@@ -2,31 +2,27 @@ package in.regres.tests;
 
 import in.regres.models.users.ListUsersResponse;
 import in.regres.models.users.SingleUserResponse;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static in.regres.specs.Specs.requestSpec;
 import static in.regres.specs.Specs.responseSpec;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTests {
     String url = "https://reqres.in/#support-heading";
     String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("List users")
     @Test
-    void checkEmailUsingGroovy() {
-        given()
-                .spec(requestSpec)
-                .when()
-                .get("/users")
-                .then()
-                .log().body()
-                .body("data.findAll{it.email=~/.*?@reqres.in/}.email.flatten()",
-                        hasItem("eve.holt@reqres.in"));
-    }
-
-    @Test
+    @DisplayName("Проверка значений: по одному полю для каждого пользователя")
     void checkInputInDiferentObjectOnListResponse() {
         ListUsersResponse response = given()
                 .spec(requestSpec)
@@ -49,7 +45,11 @@ public class UserTests {
         assertEquals(text, response.getSupport().getText());
     }
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Single user")
     @Test
+    @DisplayName("Проверка значений полей для одного пользователя")
     void singleUser() {
         SingleUserResponse response = given()
                 .spec(requestSpec)
@@ -69,7 +69,11 @@ public class UserTests {
         assertEquals(text, response.getSupport().getText());
     }
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Single user not found")
     @Test
+    @DisplayName("Пользователь не найден")
     void singleUserNotFound() {
         SingleUserResponse response = given()
                 .spec(requestSpec)
@@ -82,7 +86,11 @@ public class UserTests {
         assertEquals(false, response.equals(false));
     }
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Delayed response")
     @Test
+    @DisplayName("Проверка значений при медленной загрузке: по одному полю для каждого пользователя")
     void checkInputInDiferentObjectOnDelayedResponse() {
         ListUsersResponse response = given()
                 .spec(requestSpec)

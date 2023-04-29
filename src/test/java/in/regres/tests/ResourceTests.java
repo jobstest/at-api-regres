@@ -2,6 +2,11 @@ package in.regres.tests;
 
 import in.regres.models.resource.ListResourceResponse;
 import in.regres.models.resource.SingleResourceResponse;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static in.regres.specs.Specs.requestSpec;
@@ -13,8 +18,12 @@ public class ResourceTests {
     String url = "https://reqres.in/#support-heading";
     String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Single <Resource>")
     @Test
-    void singleResourse() {
+    @DisplayName("Проверка значений полей для одного ресурса")
+    void singleResource() {
         SingleResourceResponse response = given()
                 .spec(requestSpec)
                 .when()
@@ -33,7 +42,11 @@ public class ResourceTests {
         assertEquals(url, response.getSupport().getUrl());
     }
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("List <Resource>")
     @Test
+    @DisplayName("Проверка значений: по одному полю для каждого ресурcа")
     void checkInputInDiferentObjectonListResponse() {
         ListResourceResponse response = given()
                 .spec(requestSpec)
@@ -57,7 +70,11 @@ public class ResourceTests {
         assertEquals(text, response.getSupport().getText());
     }
 
+    @Owner("parfionov")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Single <Resource> not found")
     @Test
+    @DisplayName("Ресурс не найден")
     void singleRasourceNotFound() {
         SingleResourceResponse response = given()
                 .spec(requestSpec)
