@@ -1,12 +1,13 @@
 package in.regres.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 import static in.regres.helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
+import static io.restassured.filter.log.LogDetail.ALL;
+import static io.restassured.http.ContentType.JSON;
 
 public class Specs {
     private static String testUri = "https://reqres.in";
@@ -16,9 +17,10 @@ public class Specs {
             .basePath(testPath)
             .log().all()
             .filter(withCustomTemplates())
-            .contentType(ContentType.JSON);
+            .contentType(JSON);
 
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
+            .log(ALL)
             .build();
 
 }
