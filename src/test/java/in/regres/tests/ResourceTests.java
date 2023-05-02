@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ import static in.regres.specs.Specs.requestSpec;
 import static in.regres.specs.Specs.responseSpec;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-@Disabled
+
 public class ResourceTests {
     String url = "https://reqres.in/#support-heading";
     String text = "To keep ReqRes free, contributions towards server costs are appreciated!";
