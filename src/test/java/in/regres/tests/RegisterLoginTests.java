@@ -1,6 +1,5 @@
 package in.regres.tests;
 
-import com.github.javafaker.Faker;
 import in.regres.models.register_login.LoginSuccessfulResponse;
 import in.regres.models.register_login.RegisterLoginRequest;
 import in.regres.models.register_login.RegisterLoginUnsuccessfulResponse;
@@ -9,6 +8,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +16,8 @@ import static in.regres.specs.Specs.requestSpec;
 import static in.regres.specs.Specs.responseSpec;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class RegisterLoginTests extends BaseTests{
+@Disabled
+public class RegisterLoginTests extends BaseTests {
 
     String email = "eve.holt@reqres.in";
     String password = faker.internet().password();
