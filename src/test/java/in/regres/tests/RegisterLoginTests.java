@@ -95,6 +95,24 @@ public class RegisterLoginTests extends BaseTests{
 
     @Owner("parfionov")
     @Severity(SeverityLevel.BLOCKER)
+    @Feature("Register unsuccessful With emty field")
+    @Test
+    @DisplayName("Регистрация с пустыми полями")
+    void registerUnsuccessfulWithEmtyField() {
+
+        RegisterLoginUnsuccessfulResponse response = given()
+                .spec(requestSpec)
+                .post("/register")
+                .then()
+                .spec(responseSpec)
+                .log().all()
+                .statusCode(400)
+                .extract().as(RegisterLoginUnsuccessfulResponse.class);
+        assertEquals(errorMessage, response.getError());
+    }
+
+    @Owner("parfionov")
+    @Severity(SeverityLevel.BLOCKER)
     @Feature("Login unsuccessful")
     @Test
     @DisplayName("Авторизация")
@@ -151,6 +169,24 @@ public class RegisterLoginTests extends BaseTests{
                 .spec(requestSpec)
                 .contentType("text/html")
                 .formParam("password", password)
+                .post("/login")
+                .then()
+                .spec(responseSpec)
+                .log().all()
+                .statusCode(400)
+                .extract().as(RegisterLoginUnsuccessfulResponse.class);
+        assertEquals(errorMessage, response.getError());
+    }
+
+    @Owner("parfionov")
+    @Severity(SeverityLevel.BLOCKER)
+    @Feature("Login unsuccessful with emty field")
+    @Test
+    @DisplayName("Авторизация c пустыми полями")
+    void loginUnsuccessfulWithEmtyField() {
+
+        RegisterLoginUnsuccessfulResponse response = given()
+                .spec(requestSpec)
                 .post("/login")
                 .then()
                 .spec(responseSpec)

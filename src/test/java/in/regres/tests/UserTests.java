@@ -31,7 +31,7 @@ public class UserTests {
                 .then()
                 .spec(responseSpec)
                 .log().body()
-                .statusCode(201)
+                .statusCode(200)
                 .extract().as(ListUsersResponse.class);
         assertEquals(2, response.getPage());
         assertEquals(6, response.getPerPage());
@@ -58,7 +58,7 @@ public class UserTests {
                 .then()
                 .spec(responseSpec)
                 .log().body()
-                .statusCode(400)
+                .statusCode(200)
                 .extract().as(SingleUserResponse.class);
         assertEquals(2, response.getData().getId());
         assertEquals("janet.weaver@reqres.in", response.getData().getEmail());
@@ -99,7 +99,7 @@ public class UserTests {
                 .then()
                 .spec(responseSpec)
                 .log().body()
-                .statusCode(400)
+                .statusCode(200)
                 .extract().as(ListUsersResponse.class);
         assertEquals(1, response.getPage());
         assertEquals(6, response.getPerPage());
