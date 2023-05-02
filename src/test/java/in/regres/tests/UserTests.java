@@ -99,7 +99,7 @@ public class UserTests {
                 .then()
                 .spec(responseSpec)
                 .log().body()
-                .statusCode(200)
+                .statusCode(400)
                 .extract().as(ListUsersResponse.class);
         assertEquals(1, response.getPage());
         assertEquals(6, response.getPerPage());
