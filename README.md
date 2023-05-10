@@ -1,4 +1,4 @@
-TODO: Проект будет развиваться, дополняться, усложняться.
+### Запуск: gradle clean test -DlocalOrRemote=local
 ## Проект по тестированию сайта "reqres.in"
 > <a target="_blank" href="https://reqres.in/">Ссылка на сайт</a>
 
